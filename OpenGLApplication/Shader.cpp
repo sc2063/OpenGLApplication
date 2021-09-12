@@ -28,6 +28,7 @@ ShaderProgramSource Shader::ParseShader(const std::string& filepath)
 		{
 			if (line.find("vertex") != std::string::npos)
 				type = ShaderType::VERTEX;
+
 			if (line.find("fragment") != std::string::npos)
 				type = ShaderType::FRAGMENT;
 		}
@@ -92,21 +93,36 @@ unsigned int Shader::GetUniformLocation(const std::string& name)
 	int location = glGetUniformLocation(ID, name.c_str());
 	if (location == -1)
 		std::cout << "Warning uniform" << name << "does not exist" << std::endl;
+	UniformLocationCache[name] = location;
 	return location;
 }
 
 Shader::~Shader()
 {
-
+	glDeleteShader(ID);
+	std::cout <<" Shader was delete " << std::endl;
 }
 
-void Shader::Bind()
+void Shader::Bind() const
 {
 	glUseProgram(ID);
 }
 
-void Shader::UnBind()
+void Shader::UnBind() const
 {
 	glUseProgram(0);
+}
+
+void Shader::SetUnifrom1i(const std::string& name, int value)
+{
+	glUniform1i(GetUniformLocation(name), value);
+}
+void Shader::SetUnifromMatrix4fv(const std::string& name, const glm::mat4& matrix)
+{
+	glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, glm::value_ptr(matrix));
+}
+void Shader::SetViewMatrix4fv(const std::string& name, const glm::mat4& matrix)
+{
+	glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
 }
 
