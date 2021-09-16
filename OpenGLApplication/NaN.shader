@@ -27,10 +27,10 @@ out vec4 fragColor;
 in vec2 TexCoord;
 in vec3 outColor;
 
+uniform sampler2D texture0;
 uniform sampler2D texture1;
-
 void main()
 {
-	vec4 texColor= texture(texture1,TexCoord);
-	fragColor = mix(texColor,vec4(outColor,1.0),0.0);
+	vec4 texColor= texture(texture0,TexCoord);
+	fragColor = mix(texColor,vec4(outColor,1.0),0.01);
 }

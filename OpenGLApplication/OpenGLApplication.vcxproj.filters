@@ -49,6 +49,8 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="NaN.shader" />
+    <None Include="LookAtmatrix.md" />
+    <None Include="NaN_F.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Render.h">

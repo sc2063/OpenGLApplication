@@ -156,7 +156,9 @@
     <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LookAtmatrix.md" />
     <None Include="NaN.shader" />
+    <None Include="NaN_F.shader" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

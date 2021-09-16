@@ -27,10 +27,10 @@ public:
 	void UnBind() const;
 
 	//setUniform
-	void SetUnifrom1i(const std::string& name, int value);
-	void SetUnifromMatrix4fv(const std::string& name, const glm::mat4& matrix);
+	void SetUniform1i(const std::string& name, int value);
+	void SetUniformMatrix4fv(const std::string& name, const glm::mat4& matrix);
 	void SetViewMatrix4fv(const std::string& name, const glm::mat4& matrix);
-
+	void SetUniform3f(const std::string& name, const float v1, const float v2, const float v3);
 private:
 	ShaderProgramSource ParseShader(const std::string& filepath);
 	unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);

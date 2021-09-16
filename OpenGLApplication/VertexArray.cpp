@@ -18,6 +18,7 @@ void VertexArray::Bind() const
 
 void VertexArray::UnBind() const
 {
+	glEnableVertexAttribArray(0);
 	glBindVertexArray(0);
 }
 
